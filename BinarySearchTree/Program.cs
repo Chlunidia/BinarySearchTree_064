@@ -1,6 +1,7 @@
 ﻿using System;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
+using System.ComponentModel.Design.Serialization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -57,9 +58,20 @@ namespace BinarySearchTree
                 }
             }
         }
-    }
-    internal class Program
-    {
+        public void search(string element, ref Node parent, ref Node currentNode)
+        {
+            /*This function searches the currentNode of the specified Node as well as the currentNode of it's parent*/
+            currentNode = ROOT;
+            parent = null;
+            while ((currentNode != null) && (currentNode.info != element))
+            {
+                parent = currentNode;
+                if (string.Compare(element, currentNode.info) < 0)
+                    currentNode = currentNode.leftchild;
+                else
+                    currentNode = currentNode.rightchild;
+            }
+        }
         static void Main(string[] args)
         {
         }
